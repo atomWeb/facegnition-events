@@ -1,0 +1,47 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{exact: true}" routerLink="/home">
+        <mat-icon aria-label="Side nav menu icon">home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLinkActive="item-active" routerLink="events">
+        <mat-icon aria-label="Side nav menu icon">view_list</mat-icon>
+        <span>Events</span>
+      </a>
+      <a mat-list-item routerLinkActive="item-active" routerLink="./event">
+        <mat-icon aria-label="Side nav menu icon">event</mat-icon>
+        <span>Add event</span>
+      </a>
+      <a mat-list-item routerLinkActive="item-active" routerLink="./person">
+        <mat-icon aria-label="Side nav menu icon">person_add</mat-icon>
+        <span>Add person</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="javascript:void()">
+        <mat-icon aria-label="Side nav menu icon">logout</mat-icon>
+        <span>Logout</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">dialpad</mat-icon>
+      </button>
+      <mat-icon aria-label="Toolbar app icon">face</mat-icon>
+      <span>facegnition-events</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <footer>© {{ copyrightYear }} Cristian Jose Perez Guerra.</footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
