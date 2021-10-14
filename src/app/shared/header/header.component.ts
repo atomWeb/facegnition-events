@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivationEnd, Data, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/internal/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',

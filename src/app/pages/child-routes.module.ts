@@ -10,8 +10,8 @@ const childRoutes: Routes = [
 
   { path: '', component: HomeComponent, data:{ title: 'Home' } },
   { path: 'events', component: EventsComponent, data:{ title: 'Events list.' } },
-  { path: 'event', component: EventComponent, data:{ title: 'Event maintenance.' } },
-  { path: 'person', component: PersonComponent, data:{ title: 'Person maintenance.' } },
+  { path: 'event', component: EventComponent, data:{ title: 'Add event.' } },
+  { path: 'person', component: PersonComponent, data:{ title: 'Add person.' } },
 
 ];
 
