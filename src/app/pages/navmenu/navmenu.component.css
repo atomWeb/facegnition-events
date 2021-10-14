@@ -51,14 +51,3 @@ mat-toolbar > button mat-icon:not(:hover) {
 .item-active .mat-icon {
   color: #2980b9;
 }
-
-footer {
-  bottom: 0;
-  color: #67757c;
-  left: 0px;
-  padding: 17px 15px;
-  position: absolute;
-  right: 0;
-  border-top: 1px solid rgba(120, 130, 140, 0.13);
-  background: #ffffff;
-}

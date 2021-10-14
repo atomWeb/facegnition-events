@@ -1,1 +1,44 @@
-<p>person works!</p>
+<app-header></app-header>
+<mat-card class="register">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Add person data.</mat-card-title>
+    <mat-card-subtitle>
+      <span>
+        Upload a photo that clearly shows the person's face and fill in the rest
+        of the information.
+      </span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="register-form data-form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+
+      <file-upload formControlName="thumbnail" requiredFileType="image/png"></file-upload>
+
+      <mat-form-field>
+        <input matInput name="personName" placeholder="Person name" formControlName="personName" #personName />
+        <mat-hint align="end">
+          {{ personName.value.length }} / 60
+        </mat-hint>
+        <mat-error *ngIf="regForm.controls['personName'].errors?.required">Person name mandatory.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Events</mat-label>
+        <mat-select formControlName="events" multiple>
+          <mat-option *ngFor="let event of eventsList" [value]="event">{{event}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-card-actions>
+        <button mat-raised-button type="button" (click)="resetForm()" [disabled]="!regForm.dirty">
+          Clean form
+        </button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!regForm.valid">
+          Add person
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

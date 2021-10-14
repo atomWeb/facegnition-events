@@ -9,8 +9,6 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./navmenu.component.css'],
 })
 export class NavmenuComponent {
-  copyrightYear!: string;
-
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -18,7 +16,5 @@ export class NavmenuComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
-    this.copyrightYear = new Date().getFullYear().toString();
-  }
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }

@@ -9,9 +9,9 @@ import { PersonComponent } from './person/person.component'
 const childRoutes: Routes = [
 
   { path: '', component: HomeComponent, data:{ title: 'Home' } },
-  { path: 'events', component: EventsComponent, data:{ title: 'Events list' } },
-  { path: 'event', component: EventComponent, data:{ title: 'Event maintenance' } },
-  { path: 'person', component: PersonComponent, data:{ title: 'Person maintenance' } },
+  { path: 'events', component: EventsComponent, data:{ title: 'Events list.' } },
+  { path: 'event', component: EventComponent, data:{ title: 'Event maintenance.' } },
+  { path: 'person', component: PersonComponent, data:{ title: 'Person maintenance.' } },
 
 ];
 
