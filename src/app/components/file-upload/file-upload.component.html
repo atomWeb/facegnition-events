@@ -1,22 +1,39 @@
 <input
   type="file"
+  accept="{{ requiredFileType }}"
   class="file-input"
   (change)="onFileSelectedHdl($event)"
   #fileUpload
 />
 
-<div class="file-upload">
-  <mat-form-field>
-    <input matInput [disabled]="true" [value]="fileName" />
-  </mat-form-field>
+<div class="file-upload-component">
+  <div class="file-upload-row">
+    <div *ngIf="base64Img; else fakeImage" class="thumbnails">
+      <img [src]="base64Img" alt="" style="height: 170px" />
+    </div>
+    <ng-template #fakeImage>
+      <div class="thumbnails">
+        <img
+          src="../../assets/add_photo.jpg"
+          alt="Add photo"
+          style="height: 170px"
+        />
+      </div>
+    </ng-template>
 
-  <button
-    mat-mini-fab
-    color="primary"
-    class="upload-button"
-    (click)="onClick(fileUpload)"
-    [disabled]="disabled"
-  >
-    <mat-icon aria-label="upload file icon">attach_file</mat-icon>
-  </button>
+    <mat-form-field>
+      <input matInput [disabled]="true" [value]="fileName" />
+    </mat-form-field>
+
+    <button
+      type="button"
+      mat-mini-fab
+      color="primary"
+      class="upload-button"
+      (click)="onClick(fileUpload)"
+      [disabled]="disabled"
+    >
+      <mat-icon aria-label="upload file icon">attach_file</mat-icon>
+    </button>
+  </div>
 </div>

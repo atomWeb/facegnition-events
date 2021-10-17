@@ -1,6 +1,6 @@
 .register {
   max-width: 400px;
-  margin: 30px auto 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .register-form {
@@ -18,5 +18,12 @@
 .mat-card-actions {
   display: flex;
   justify-content: center;
-  margin-top: 1em;
+  margin-top: 0.1em;
+}
+
+.invisible {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  width: 0;
 }

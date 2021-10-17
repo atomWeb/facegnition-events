@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { MaterialModule } from './material-module'
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-   // FileUploadComponent,
+    // FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { AppComponent } from './app.component';
     PagesModule,
     // SharedModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

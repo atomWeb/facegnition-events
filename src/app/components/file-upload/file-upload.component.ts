@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -7,6 +7,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { FileUtils } from '../../shared/file-utils';
 
 @Component({
   selector: 'file-upload',
@@ -28,17 +29,24 @@ import {
 export class FileUploadComponent implements ControlValueAccessor, Validators {
   @Input()
   requiredFileType!: string;
+
+  @Output()
+  image64Coded: EventEmitter<string> = new EventEmitter();
+
   fileName!: string;
-  onChange = (fileName: String) => {};
+  onChange = (fileName: string) => {};
   onTouched = () => {};
   disabled: boolean = false;
   fileUploadSuccess: boolean = false;
   fileUploadError = false;
   onValidatorChange = () => {};
+  fileUtils = new FileUtils();
+  base64Img!: string;
 
   constructor() {}
-  writeValue(obj: any): void {
-    this.fileName = obj;
+  writeValue(value: any): void {
+    this.fileName = value;
+    this.base64Img = value;
   }
   registerOnChange(onChange: any): void {
     this.onChange = onChange;
@@ -67,19 +75,21 @@ export class FileUploadComponent implements ControlValueAccessor, Validators {
 
   registerOnValidatorChange(onValidatorChange: () => void) {
     this.onValidatorChange = onValidatorChange;
-}
+  }
 
   onClick(fileUpload: HTMLInputElement) {
     this.onTouched();
     fileUpload.click();
   }
 
-  // Este sera el que la pase a base64 y devuelva el string
   onFileSelectedHdl(event: any) {
-    console.log(event);
     const file: File = event.target.files[0];
     if (file) {
       this.fileName = file.name;
+      this.fileUtils.toBase64(file).subscribe((imgCoded) => {
+        this.base64Img = imgCoded;
+        this.image64Coded.emit(this.base64Img);
+      });
       this.onChange(this.fileName);
       this.fileUploadSuccess = true;
       this.onValidatorChange();

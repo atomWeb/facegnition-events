@@ -13,7 +13,11 @@
   <mat-card-content>
     <form class="register-form data-form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
 
-      <file-upload formControlName="thumbnail" requiredFileType="image/png"></file-upload>
+      <file-upload
+        formControlName="thumbnail"
+        requiredFileType="image/jpeg, image/png"
+        (image64Coded)="image64 = $event">
+      </file-upload>
 
       <mat-form-field>
         <input matInput name="personName" placeholder="Person name" formControlName="personName" #personName />
@@ -25,11 +29,14 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Events</mat-label>
-        <mat-select formControlName="events" multiple>
-          <mat-option *ngFor="let event of eventsList" [value]="event">{{event}}</mat-option>
+        <mat-select formControlName="selectedEvents" multiple>
+          <mat-option *ngFor="let _event of eventsList" [value]="_event">{{_event}}</mat-option>
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field class="invisible example-full-width">
+        <input matInput name="imageCode64" formControlName="imageCode64" #imageCode64 />
+      </mat-form-field>
 
       <mat-card-actions>
         <button mat-raised-button type="button" (click)="resetForm()" [disabled]="!regForm.dirty">
