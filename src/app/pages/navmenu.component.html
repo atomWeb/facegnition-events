@@ -6,24 +6,28 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{exact: true}" routerLink="/home">
-        <mat-icon aria-label="Side nav menu icon">home</mat-icon>
+        <mat-icon aria-label="Side nav home icon">home</mat-icon>
         <span>Home</span>
       </a>
       <a mat-list-item routerLinkActive="item-active" routerLink="events">
-        <mat-icon aria-label="Side nav menu icon">view_list</mat-icon>
+        <mat-icon aria-label="Side nav events icon">view_list</mat-icon>
         <span>Events</span>
       </a>
       <a mat-list-item routerLinkActive="item-active" routerLink="./event">
-        <mat-icon aria-label="Side nav menu icon">event</mat-icon>
+        <mat-icon aria-label="Side nav add event icon">event</mat-icon>
         <span>Add event</span>
       </a>
       <a mat-list-item routerLinkActive="item-active" routerLink="./person">
-        <mat-icon aria-label="Side nav menu icon">person_add</mat-icon>
+        <mat-icon aria-label="Side nav add person icon">person_add</mat-icon>
         <span>Add person</span>
       </a>
       <mat-divider></mat-divider>
       <a mat-list-item href="javascript:void(0)">
-        <mat-icon aria-label="Side nav menu icon">logout</mat-icon>
+        <mat-icon aria-label="Side nav login icon">account_box</mat-icon>
+        <span>Login</span>
+      </a>
+      <a mat-list-item href="javascript:void(0)">
+        <mat-icon aria-label="Side nav logout icon">logout</mat-icon>
         <span>Logout</span>
       </a>
     </mat-nav-list>
@@ -41,6 +45,7 @@
       <mat-icon aria-label="Toolbar app icon">face</mat-icon>
       <span>facegnition-events</span>
     </mat-toolbar>
+    <app-header></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>

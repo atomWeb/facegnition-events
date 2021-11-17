@@ -6,8 +6,8 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MaterialModule } from '../material-module'
 import { SharedModule } from '../shared/shared.module'
 
-import { HomeComponent } from '../pages/home/home.component';
-import { NavmenuComponent } from '../pages/navmenu/navmenu.component';
+import { NavmenuComponent } from './navmenu.component'
+import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import { EventComponent } from './event/event.component';
 import { PersonComponent } from './person/person.component';
@@ -15,8 +15,8 @@ import { FileUploadComponent } from '../components/file-upload/file-upload.compo
 
 @NgModule({
   declarations: [
-    HomeComponent,
     NavmenuComponent,
+    HomeComponent,    
     EventsComponent,
     EventComponent,
     PersonComponent,

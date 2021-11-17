@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavmenuComponent } from './navmenu/navmenu.component'
+import { NavmenuComponent } from './navmenu.component'
 
 const routes: Routes = [
   {

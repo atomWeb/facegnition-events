@@ -5,8 +5,8 @@ import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navmenu',
-  templateUrl: './navmenu.component.html',
-  styleUrls: ['./navmenu.component.css'],
+  templateUrl: 'navmenu.component.html',
+  styleUrls: ['navmenu.component.css'],
 })
 export class NavmenuComponent {
   isHandset$: Observable<boolean> = this.breakpointObserver
